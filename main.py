@@ -43,9 +43,10 @@ def run_training_pipeline(app_usage, churn_labels, claims, web_visits):
     print(f"Training feature matrix shape: {all_features.shape}")
     print(f"Churn rate: {labels['churn'].mean():.2%}\n")
 
+    feature_train = all_features.drop(columns=["member_id"])
     # Train model using single learner
     s_learner = SLearnerModel(XGBOOST_PARAMS, RANDOM_STATE)
-    X_train, X_val, y_train, y_val = s_learner.prepare_data(all_features, labels, TEST_SIZE)
+    X_train, X_val, y_train, y_val = s_learner.prepare_data(feature_train, labels, TEST_SIZE)
     model = s_learner.train(X_train, y_train, X_val, y_val)
 
     # Save trained model
