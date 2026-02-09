@@ -66,6 +66,7 @@ class FeatureEngineer:
         features['days_since_signup'] = (self.obs_end - members_df['signup_date']).dt.days
         features['is_new_member'] = (features['days_since_signup'] <= 30).astype(int)
         features['is_mature_member'] = (features['days_since_signup'] >= 365).astype(int)
+        features['member_id'] = members_df['member_id']
 
         features_df = pd.DataFrame({k: v.values for k, v in features.items()}, index=members_df['member_id'])
         labels_df = None
