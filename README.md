@@ -14,6 +14,11 @@ This project develops an end-to-end churn reduction pipeline that:
 
 - The final output is a CSV containing the top prioritized members for outreach along with their prioritization scores and rank.
 
+The goal is not only to predict churn, but to **identify which members should be contacted to maximize retention impact**.
+
+Traditional churn prediction prioritizes high-risk members, while this solution prioritizes **members whose churn probability is expected to decrease the most if outreach occurs**, ensuring outreach resources are allocated where they generate the greatest value.
+
+
 ## Setup Instructions
 1. Clone the repository
 ```bash
