@@ -14,9 +14,14 @@ import warnings
 warnings.filterwarnings("ignore")
 
 # Load Data Functions
-def load_training_data():
-    
-    from .config import TRAIN_APP_USAGE, TRAIN_CHURN_LABELS, TRAIN_CLAIMS, TRAIN_WEB_VISITS
+def load_training_data(app_path = None, labels_path = None, claims_path = None, web_path = None):
+    if app_path == None:
+        from .config import TRAIN_APP_USAGE, TRAIN_CHURN_LABELS, TRAIN_CLAIMS, TRAIN_WEB_VISITS
+    else:
+        TRAIN_APP_USAGE = app_path
+        TRAIN_CHURN_LABELS = labels_path
+        TRAIN_CLAIMS = claims_path
+        TRAIN_WEB_VISITS = web_path
 
     print("Loading training data...")
 
@@ -35,9 +40,15 @@ def load_training_data():
     return app_usage, churn_labels, claims, web_visits
 
 
-def load_test_data():
+def load_test_data(test_app_path = None, test_claims_path = None, test_members_path = None, test_web_path = None):
 
-    from .config import TEST_APP_USAGE, TEST_CLAIMS, TEST_MEMBERS, TEST_WEB_VISITS
+    if test_app_path == None:
+        from .config import TEST_APP_USAGE, TEST_CLAIMS, TEST_MEMBERS, TEST_WEB_VISITS
+    else:
+        TEST_APP_USAGE = test_app_path
+        TEST_CLAIMS = test_claims_path
+        TEST_MEMBERS = test_members_path
+        TEST_WEB_VISITS = test_web_path
 
     print("Loading test data...")
 
