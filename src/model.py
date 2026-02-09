@@ -79,7 +79,8 @@ class SLearnerModel:
 
     def estimate_cate(self, features):
         print("\nEstimating treatment effects (CATE)...")
-        X = features[self.feature_columns].copy()
+        feature_model = features.drop(columns=["member_id"])
+        X = feature_model[self.feature_columns].copy()
 
         # Scenario 1: no outreach
         X_no_outreach = X.copy()
@@ -95,12 +96,12 @@ class SLearnerModel:
         cate = prob_churn_no_outreach - prob_churn_with_outreach
 
         results = pd.DataFrame({
-            'member_id': features.index,
+            'member_id': features['member_id'],
             'churn_prob_no_outreach': prob_churn_no_outreach,
             'churn_prob_with_outreach': prob_churn_with_outreach,
             'cate': cate,
             'cate_percentage_points': cate * 100
-        }).set_index('member_id')
+        })
 
         print(f"  Mean CATE: {results['cate'].mean():.4f}")
         print(f"  Median CATE: {results['cate'].median():.4f}")
