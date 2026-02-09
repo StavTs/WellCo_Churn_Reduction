@@ -124,7 +124,7 @@ def run_test_pipeline(engineer, s_learner, test_app_usage, test_claims, test_mem
     outreach_list = selector.select_top_n(ranked_members, n=optimal_n)
 
     outreach_list.to_csv(OUTREACH_LIST_FILE, index=False)
-    print(f"\n✅ Outreach list saved: {OUTREACH_LIST_FILE}")
+    print(f"Outreach list saved: {OUTREACH_LIST_FILE}")
 
     return outreach_list
 
