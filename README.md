@@ -20,17 +20,32 @@ Traditional churn prediction prioritizes high-risk members, while this solution 
 
 
 ## Setup Instructions
-1. Clone the repository
+
+### Clone the repository
 ```bash
 git clone https://github.com/StavTs/WellCo_Churn_Reduction
 cd WellCo_Churn_Reduction
 ```
+### Create a virtual environment
+``` bash
+python -m venv venv
+```
 
-3. Install dependencies
+### Activate the virtual environment
+#### macOS / Linux
+```bash
+source venv/bin/activate
+```
+#### Windows
+```bash
+venv\Scripts\activate
+```
+
+### Install dependencies
    
-`pip install -r requirements.txt`
+`python -m pip install -r requirements.txt`
 
-5. Provide dataset path (optional) - Since the data is sensitive and can't be publish
+### Provide dataset path (optional) - Since the data is sensitive and can't be publish
 
 If the official dataset is available, place the CSV files inside:
 
@@ -41,7 +56,7 @@ And write the path to the data folder when asked while running the code
 
 If no dataset is provided, the pipeline automatically generates synthetic data so the full pipeline remains reproducible.
 
-4. Run the pipeline
+### Run the pipeline
    
 `python main.py`
 
